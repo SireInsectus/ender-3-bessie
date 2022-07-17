@@ -1,0 +1,24 @@
+M106                                  ;Start cooling fan
+M140 S{material_bed_temperature}      ;Start bed heating
+M104 S{material_print_temperature} T0 ;Start nhotend heating
+
+G28    ;Home
+G29 P1 ;Autohome
+
+M190 R{material_bed_temperature}      ;WAIT for bed heating
+M109 R{material_print_temperature} T0 ;WAIT for hotend
+
+G92 E0 ;Reset Extruder
+G1 Z2.0 F3000 ;Move Z Axis up
+
+G1 X1.1 Y20  Z0.20 F5000.0 ;Move to start position
+G1 X1.1 Y200 Z0.20 F1500.0 E15 ;Draw the first line
+
+G1 X1.4 Y200 Z0.20 F5000.0 ;Move to side a little
+G1 X1.4 Y20  Z0.20 F1500.0 E30 ;Draw the second line
+
+G1 X1.7 Y20  Z0.20 F5000.0 ;Move to side a little
+G1 X1.7 Y200 Z0.20 F1500.0 E30 ;Draw the third line
+
+G92 E0 ;Reset Extruder
+G1 Z2.0 F3000 ;Move Z Axis up
